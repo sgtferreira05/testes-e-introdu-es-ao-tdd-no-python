@@ -1,5 +1,3 @@
-
-
 def soma(x,y):
     '''
     Soma x e y, onde x e y devem ser números (int ou float).
