@@ -1,5 +1,20 @@
+try:
+    import sys
+    import os
+
+    sys.path.append(
+        os.path.abspath(
+            os.path.join(
+                os.path.dirname(__file__),
+                  '..\src'))
+    )
+except ImportError:
+    print("Erro ao importar módulos necessários para os testes.")
+    sys.exit(1)
+
+
 import unittest
-from calculadora import soma, subtracao
+from src.calculadora import soma, subtracao
 
 class TestCalculadora(unittest.TestCase):
     def test_soma(self):
@@ -29,4 +44,5 @@ class TestCalculadora(unittest.TestCase):
             soma(10, '20')
         self.assertEqual(str(context.exception), "O segundo argumento deve ser um número")
 
-unittest.main(verbosity=2)
+if __name__ == '__main__':
+    unittest.main(verbosity=2)

@@ -5,8 +5,23 @@ Part 1 (RED): Create a test that fails
 Part 2 (GREEN): Create the minimum code to make the test pass
 Part 3 (BLUE): Refactor the code to make it better
 """
+
+try:
+    import sys
+    import os
+
+    sys.path.append(
+        os.path.abspath(
+            os.path.join(
+                os.path.dirname(__file__),
+                    '..\src'))  #type: ignore
+    )
+except ImportError:
+    print("Erro ao importar módulos necessários para os testes.")
+    sys.exit(1)
+
 import unittest
-from baconcomovos import bacon_com_ovos
+from src.baconcomovos import bacon_com_ovos
 
 class TestBaconComOvos(unittest.TestCase):
     def test_bacon_com_ovos_deve_levantar_assertion_error_se_valor_nao_for_inteiro(self):
@@ -47,5 +62,5 @@ class TestBaconComOvos(unittest.TestCase):
             with self.subTest(entrada=entrada, saida=saida):
                 self.assertEqual(bacon_com_ovos(entrada), saida)
 
-unittest.main(verbosity=2)
- 
+if __name__ == '__main__':
+    unittest.main(verbosity=2)

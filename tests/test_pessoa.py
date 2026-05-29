@@ -12,9 +12,23 @@ class Pessoa
 
             (dados obtidos se tornam True se dados obtidos forem OK)
 """
+try:
+    import sys
+    import os
+
+    sys.path.append(
+        os.path.abspath(
+            os.path.join(
+                os.path.dirname(__file__),
+                  '..\src'))
+    )
+except ImportError:
+    print("Erro ao importar módulos necessários para os testes.")
+    sys.exit(1)
+
 import unittest
 from unittest.mock import patch
-from pessoa import Pessoa
+from src.pessoa import Pessoa
 
 class TestPessoa(unittest.TestCase):
     def setUp(self):
